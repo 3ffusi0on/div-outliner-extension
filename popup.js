@@ -1,5 +1,12 @@
-document.getElementById('toggleButton').addEventListener('click', function() {
-  chrome.runtime.sendMessage({toggle: true});
-  const icon = document.getElementById('powerIcon');
-  icon.classList.toggle('active');
+document.getElementById("toggleButton").addEventListener("click", function () {
+  const icon = document.getElementById("powerIcon");
+  const isActive = icon.classList.contains("active");
+
+  chrome.runtime.sendMessage({ toggle: !isActive });
+
+  if (isActive) {
+    icon.classList.remove("active");
+  } else {
+    icon.classList.add("active");
+  }
 });
